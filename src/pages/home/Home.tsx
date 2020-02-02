@@ -8,7 +8,7 @@ export class Home extends React.Component<any> {
     render() {
         return (
             <React.Fragment>
-                <Header onChange={this.props.onChange} />
+                <Header handleChange={this.props.handleChange} />
                 <List
                     shows={this.props.shows}
                     querySearch={this.props.querySearch} />

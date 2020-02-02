@@ -1,49 +1,60 @@
-import * as React from "react";
-import { defaultPic } from "../../helpers/show";
+import React from 'react';
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
 import StarRatingComponent from "react-star-rating-component";
-// import { useHistory } from "react-router-dom";
-
-export class Tile extends React.Component<any> {
-    convertString(xmlString: string): string {
-        const temporalDivElement: HTMLDivElement = document.createElement("div");
-        temporalDivElement.innerHTML = xmlString;
-        return temporalDivElement.textContent || temporalDivElement.innerText || "";
-    }
-    //   const history = useHistory();
-    handlePic(pic: string): string {
-        return pic ? pic : defaultPic;
-    }
-    //   function handleClick(id: string) {
-    //     history.push({
-    //       pathname: `/show/${id}`
-    //     });
-    //   }
-
-    render() {
-        return (<div
-            className="card tile"
-            data-testid="tile"
-            role="button"
-        >
-            <img
-                src={this.handlePic(this.props.pic)}
-                alt="movie img"
-                height="170"
-                className="card-img-top"
-                width="auto"
-            />
-            <span className="card-title tile-headline">{this.props.title}</span>
-            <div className="description card-text">{this.convertString(this.props.description)}</div>
-            <small>
-                <StarRatingComponent
-                    name="rate"
-                    starCount={10}
-                    value={Math.round(this.props.score) / 2}
-                />
-            </small>{" "}
-        </div>)
-    }
+import { Link } from 'react-router-dom';
 
 
+
+import { UseCardHandleHook } from './../../hooks/useCardHandleHook';
+
+export const Tile = ({ show }: any) => {
+    const [handlePic, convertString] = UseCardHandleHook()
+    console.log(show)
+    return (
+        <Link to={`show/${show.id}`}>
+            <div className="card__container" role="button" data-testid="home-route" >
+                <div className="card-show">
+                    <Card >
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                alt="Contemplative Reptile"
+                                height="295"
+                                width="210"
+
+                                image={handlePic(show.pic)}
+                                title="Contemplative Reptile"
+                            />
+
+                            <CardContent className="tile__text__container">
+                                <Typography gutterBottom variant="h5" className="tile__headline">
+                                    {show.title}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    color="textSecondary"
+                                    component="p"
+                                    className="show-description"
+                                >
+                                    {convertString(show.description)}
+                                </Typography>
+                                <small>
+                                    <StarRatingComponent
+                                        name="rate"
+                                        starCount={10}
+                                        value={Math.round(show.score) / 2}
+                                    />
+                                </small>{" "}
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
+                </div>
+            </div>
+        </Link>
+
+    )
 }
-

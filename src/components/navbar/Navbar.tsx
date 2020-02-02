@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-export class Navbar extends React.Component {
-    render() {
-        return (
-            <nav className="navbar navbar-light bg-light" data-testid="navbar">
-                <Link to="/">
-                    <h4 className="navbar-brand">React Shows</h4>
-                </Link>
-            </nav>
-        );
+import { logo } from "../../helpers/show"
 
-    }
+export const Navbar = () => {
+    return (
+        <div className="navbar" data-testid="navbar">
+            <div className="navbar__item__logo"><Link to={"/"} >
+                <img src={logo} alt="logo" height="30" />
+            </Link>
+            </div>
+        </div>
+    );
 }

@@ -15,11 +15,12 @@ export class List extends React.Component<any> {
                         {this.props.shows.map((show: Show) => (
                             <Tile
                                 key={show.id}
-                                id={show.id}
-                                title={show.title}
-                                pic={show.pic}
-                                score={show.score}
-                                description={show.description}
+                                show={show}
+                            // id={show.id}
+                            // title={show.title}
+                            // pic={show.pic}
+                            // score={show.score}
+                            // description={show.description}
                             />
                         ))}
                     </div>
