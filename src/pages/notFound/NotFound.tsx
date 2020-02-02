@@ -11,7 +11,7 @@ export class NotFound extends React.Component {
                             4<span>0</span>4
                         </h1>
                     </div>
-                    <h2>the page you requested could not foundd</h2>
+                    <h2>the page you requested could not foundsd</h2>
                     <Link to="/">
                         <button className="btn btn-primary">Go Back</button>{" "}
                     </Link>
