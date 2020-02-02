@@ -9,7 +9,7 @@ import { ShowCast } from '../../components/showCast/ShowCast';
 import { Switch, Route, Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { handleShowByIdRedux, handleSeason, handleCast } from "../../redux/actions";
+import { handleShowByIdRedux, handleSeasonAction, handleCastAction } from "../../features/shows/showsSlice";
 
 import { LoadingComponent } from '../../components/loadingComponent/LoadingComponent';
 import { StoreInterface } from "../../interfaces";
@@ -18,7 +18,7 @@ export const Show = () => {
     const { id } = useParams();
     const disptach = useDispatch();
     const [handlePic, convertString] = UseCardHandleHook()
-    const { show, loading, loadingCastOrSeason } = useSelector((state: StoreInterface) => state);
+    const { show, loading, loadingCastOrSeason } = useSelector((state: StoreInterface) => state.shows);
     if (!show.title && !loading) disptach(handleShowByIdRedux(id))
 
     const SingleShowCard = () => (
@@ -56,7 +56,7 @@ export const Show = () => {
             <Link to={`/show/${id}/cast`}>
                 <div className="cast__link"
                     onClick={() =>
-                        disptach(handleCast(id)
+                        disptach(handleCastAction(id)
                         )}>
                     Cast
                 </div>
@@ -64,7 +64,7 @@ export const Show = () => {
             <Link to={`/show/${id}/seasons`}>
                 <div className="cast__link"
                     onClick={() =>
-                        disptach(handleSeason(id)
+                        disptach(handleSeasonAction(id)
                         )}
                 >
                     Seasons

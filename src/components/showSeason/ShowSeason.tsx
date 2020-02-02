@@ -6,7 +6,7 @@ import { StoreInterface } from "../../interfaces";
 export const ShowSeason = () => {
     const { showSeason, loadingCastOrSeason } = useSelector((state: StoreInterface
 
-    ) => state)
+    ) => state.shows)
     const { number, episodeOrder, premiereDate, endDate, network } = showSeason[0];
     console.log(showSeason)
     const SeasonDetailed = () => (

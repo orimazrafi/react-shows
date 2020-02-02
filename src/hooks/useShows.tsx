@@ -17,7 +17,7 @@ function formatRawShows(shows: any): Show[] {
         };
     });
 }
-export const useShows = (text: string) => {
+export const useShows = (text: any) => {
     const [shows, setShows] = useState<Show[] | []>([]);
     useEffect(() => {
         console.log('shows')

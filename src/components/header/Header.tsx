@@ -1,13 +1,14 @@
 
+
 import React from "react";
 import { useRefHook } from '../../hooks/useRefHook';
 import { useSelector, useDispatch } from "react-redux"
-import { handleShowsRedux } from './../../redux/actions';
+import { handleShowsRedux } from './../../features/shows/showsSlice'
 import { StoreInterface } from "../../interfaces";
 export const Header = () => {
 
     const dispatch = useDispatch()
-    const { text } = useSelector((state: StoreInterface) => state)
+    const { text } = useSelector((state: StoreInterface) => state.shows)
     const [textRef] = useRefHook()
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
         dispatch(handleShowsRedux(e.currentTarget.value))

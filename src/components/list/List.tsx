@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 import { LoadingComponent } from './../loadingComponent/LoadingComponent';
 
 export const List = () => {
-    const { text, shows, loading } = useSelector((state: StoreInterface) => state)
+    const { text, shows, loading } = useSelector((state: StoreInterface) => state.shows)
     const className = () => {
         return !text || shows.length === 0 ? "list__container__no__result" : "list__container"
     }

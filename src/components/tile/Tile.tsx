@@ -5,11 +5,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import StarRatingComponent from "react-star-rating-component";
-
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux"
-import { handleShowByIdRedux } from "../../redux/actions";
-
+import { handleShowByIdRedux } from "../../features/shows/showsSlice";
 import { UseCardHandleHook } from '../../hooks/useCardHandleHook';
 
 export const Tile = ({ show }: any) => {

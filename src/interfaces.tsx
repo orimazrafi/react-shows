@@ -6,13 +6,16 @@ export interface Show {
     description: string;
 }
 export interface StoreInterface {
-    loading: boolean,
-    loadingCastOrSeason: boolean,
-    shows: [],
-    show: SingleShow,
-    showSeason: Season[],
-    showCast: Cast[],
-    text: string
+    shows: {
+        loading: boolean,
+        loadingCastOrSeason: boolean,
+        shows: [],
+        show: SingleShow,
+        showSeason: Season[],
+        showCast: Cast[],
+        text: string
+    }
+
 }
 
 export interface SingleShow {

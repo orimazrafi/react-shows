@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { LoadingComponent } from './../loadingComponent/LoadingComponent';
 import { StoreInterface, Cast } from "../../interfaces";
 export const ShowCast = () => {
-    const { showCast, loadingCastOrSeason } = useSelector((state: StoreInterface) => state)
+    const { showCast, loadingCastOrSeason } = useSelector((state: StoreInterface) => state.shows)
     const Unaviable = () => <h3 className="show__cast__unaviable">currentlly unaviable</h3>
 
     return (
