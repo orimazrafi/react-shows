@@ -1,0 +1,9 @@
+@import "./components/header/Header.css";
+@import "./components/list/List.css";
+@import "./components/navbar/Navbar.css";
+@import "./components/showCast/ShowCast.css";
+@import "./components/showSeason/ShowSeason.css";
+@import "./components/tile/Tile.css";
+@import "./pages/home/Home.css";
+@import "./pages/notFound/NotFound.css";
+@import "./pages/show/Show.css";

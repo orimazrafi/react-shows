@@ -1,0 +1,11 @@
+.list__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 210px));
+    grid-auto-rows: 470px;
+    grid-column-gap: 10px;
+    justify-content: center;
+}
+
+.list__container__no__result {
+    text-align: center;
+}

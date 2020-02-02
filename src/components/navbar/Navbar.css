@@ -1,0 +1,5 @@
+.navbar {
+    background-color: lightblue;
+    display: flex;
+    height: 50px;
+}

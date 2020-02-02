@@ -1,10 +1,17 @@
+
 import React from "react";
-import { useRefHook } from './../../hooks/useRefHook';
+import { useRefHook } from '../../hooks/useRefHook';
+import { useSelector, useDispatch } from "react-redux"
+import { handleShowsRedux } from './../../redux/actions';
+import { StoreInterface } from "../../interfaces";
+export const Header = () => {
 
-
-export const Header = (props: any) => {
+    const dispatch = useDispatch()
+    const { text } = useSelector((state: StoreInterface) => state)
     const [textRef] = useRefHook()
-
+    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+        dispatch(handleShowsRedux(e.currentTarget.value))
+    }
     return (
         <div className="input__container" id="aggregate_7aa" >
             <input
@@ -13,8 +20,9 @@ export const Header = (props: any) => {
                 placeholder="Search..."
                 className="form-control"
                 name="query"
-                value={props.text}
-                onChange={props.handleChange} />
+                value={text}
+                onChange={handleChange}
+            />
         </div>
     )
 }

@@ -5,56 +5,62 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import StarRatingComponent from "react-star-rating-component";
+
 import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux"
+import { handleShowByIdRedux } from "../../redux/actions";
 
-
-
-import { UseCardHandleHook } from './../../hooks/useCardHandleHook';
+import { UseCardHandleHook } from '../../hooks/useCardHandleHook';
 
 export const Tile = ({ show }: any) => {
     const [handlePic, convertString] = UseCardHandleHook()
-    console.log(show)
+    const dispatch = useDispatch()
+
+
     return (
-        <Link to={`show/${show.id}`}>
-            <div className="card__container" role="button" data-testid="home-route" >
-                <div className="card-show">
-                    <Card >
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                alt="Contemplative Reptile"
-                                height="295"
-                                width="210"
+        <div onClick={() => dispatch(handleShowByIdRedux(show.id))}
+        >
 
-                                image={handlePic(show.pic)}
-                                title="Contemplative Reptile"
-                            />
+            <Link to={`show/${show.id}`} >
+                <div className="card__container" role="button" data-testid="home-route" >
+                    <div className="card-show">
+                        <Card >
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    alt="Contemplative Reptile"
+                                    height="295"
+                                    width="210"
 
-                            <CardContent className="tile__text__container">
-                                <Typography gutterBottom variant="h5" className="tile__headline">
-                                    {show.title}
-                                </Typography>
-                                <Typography
-                                    variant="body2"
-                                    color="textSecondary"
-                                    component="p"
-                                    className="show-description"
-                                >
-                                    {convertString(show.description)}
-                                </Typography>
-                                <small>
-                                    <StarRatingComponent
-                                        name="rate"
-                                        starCount={10}
-                                        value={Math.round(show.score) / 2}
-                                    />
-                                </small>{" "}
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+                                    image={handlePic(show.pic)}
+                                    title="Contemplative Reptile"
+                                />
+
+                                <CardContent className="tile__text__container">
+                                    <Typography gutterBottom variant="h5" className="tile__headline">
+                                        {show.title}
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        color="textSecondary"
+                                        component="p"
+                                        className="show-description"
+                                    >
+                                        {convertString(show.description)}
+                                    </Typography>
+                                    <small>
+                                        <StarRatingComponent
+                                            name="rate"
+                                            starCount={10}
+                                            value={Math.round(show.score) / 2}
+                                        />
+                                    </small>{" "}
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </div>
                 </div>
-            </div>
-        </Link>
-
+            </Link>
+        </div>
     )
 }
